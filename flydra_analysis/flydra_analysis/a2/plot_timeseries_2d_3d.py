@@ -107,7 +107,7 @@ def doit(
                 fps = result_utils.get_fps(h5)
 
             camn2cam_id, cam_id2camns = result_utils.get_caminfo_dicts(h5)
-            cam_ids = cam_id2camns.keys()
+            cam_ids = list(cam_id2camns.keys())
             cam_ids.sort()
 
             if start is not None or stop is not None:
@@ -584,7 +584,7 @@ def doit(
                             cam_id = None
                         if cam_id is not None:
                             used_cam_ids[cam_id].append(kframe)
-                for cam_id, kframes_used in used_cam_ids.iteritems():
+                for cam_id, kframes_used in used_cam_ids.items():
                     kframes_used = numpy.array(kframes_used)
                     yval = -99 * numpy.ones_like(kframes_used)
                     ax = ax_by_cam[cam_id]

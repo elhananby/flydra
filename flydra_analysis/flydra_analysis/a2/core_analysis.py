@@ -297,7 +297,7 @@ def _get_initial_file_info(kresults):
     )
     if hasattr(kresults.root, "textlog"):
         textlog = kresults.root.textlog.read_coordinates([0])
-        infostr = textlog["message"].tostring().strip("\x00")
+        infostr = textlog["message"].tostring().strip(b"\x00")
         header = flydra_analysis.analysis.result_utils.read_textlog_header(
             kresults, fail_on_error=False
         )
@@ -2321,7 +2321,14 @@ class CachingAnalyzer:
         return full, obj_id2idx
 
     def _load_dict(self, result_h5_file):
-        if isinstance(result_h5_file, str) or isinstance(result_h5_file, unicode):
+        file_is_string = False
+        if sys.version_info.major < 3:
+            if isinstance(result_h5_file, basestring):
+                file_is_string = True
+        else:
+            if isinstance(result_h5_file, str):
+                file_is_string = True
+        if file_is_string:
             raise ValueError("should pass opened HDF5, not filename")
         kresults = result_h5_file
         self_should_close = False
@@ -2346,7 +2353,7 @@ class CachingAnalyzer:
         return preloaded_dict
 
     def close(self):
-        for key, preloaded_dict in self.loaded_h5_cache.iteritems():
+        for key, preloaded_dict in self.loaded_h5_cache.items():
             if preloaded_dict["self_should_close"]:
                 preloaded_dict["kresults"].close()
                 preloaded_dict["self_should_close"] = False
