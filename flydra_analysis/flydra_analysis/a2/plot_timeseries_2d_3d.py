@@ -493,11 +493,11 @@ def doit(
                         xdata = frame
                     ax.text(xdata[0], x2d[0, 0], "%d" % obj_id)
                     (thisline,) = ax.plot(
-                        xdata, x2d[0, :], "b-", picker=5, **kwprops
+                        xdata, x2d[0, :], "b-", pickradius=5, **kwprops
                     )  # 5pt tolerance
                     all_kalman_lines[thisline] = obj_id
                     (thisline,) = ax.plot(
-                        xdata, x2d[1, :], "y-", picker=5, **kwprops
+                        xdata, x2d[1, :], "y-", pickradius=5, **kwprops
                     )  # 5pt tolerance
                     all_kalman_lines[thisline] = obj_id
                     ax.set_ylim([-100, 800])
