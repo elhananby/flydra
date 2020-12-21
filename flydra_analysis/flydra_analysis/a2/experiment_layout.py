@@ -12,8 +12,10 @@ from mayavi.modules.vectors import Vectors
 
 from tvtk.common import configure_input_data
 
+import pdb
 
 def cylindrical_arena(info=None):
+    pdb.set_trace()
     assert numpy.allclose(
         info["axis"], numpy.array([0, 0, 1])
     ), "only vertical areas supported at the moment"

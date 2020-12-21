@@ -8,7 +8,6 @@ import os
 import hashlib
 from .core_analysis import parse_seq
 
-
 class WrongXMLTypeError(Exception):
     pass
 
@@ -180,9 +179,9 @@ class Stimulus(object):
         info = {}
         for v in child:
             if v.tag == "origin":
-                info["origin"] = numpy.array(map(float, v.text.split()))
+                info["origin"] = numpy.fromiter(map(float, v.text.split()), 'float')
             elif v.tag == "axis":
-                info["axis"] = numpy.array(map(float, v.text.split()))
+                info["axis"] = numpy.fromiter(map(float, v.text.split()), 'float')
             elif v.tag == "diameter":
                 info["diameter"] = float(v.text)
             elif v.tag == "height":

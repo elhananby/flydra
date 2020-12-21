@@ -2,8 +2,8 @@
   <cylindrical_arena>
     <origin>0 0 0</origin>
     <axis>0 0 1</axis>
-    <diameter>0.33</diameter>
-    <height>0.001</height>
+    <diameter>0.5</diameter>
+    <height>0.3</height>
   </cylindrical_arena>
 </stimxml>
 <!--
@@ -16,7 +16,7 @@ fill with 4500ml water
 v = 0.0045 l
 
 
-# from 2.3 http://www.vsmp.ch/bulletin/Artikel/124/124_Jaggi.pdf 
+# from 2.3 http://www.vsmp.ch/bulletin/Artikel/124/124_Jaggi.pdf
 h = 2*r*math.cos((math.acos(1-((3*v)/(2*math.pi*r**3)))+4*math.pi)/3) +r
 h = 0.09105250976633318
 '''''''''''''''''''''''

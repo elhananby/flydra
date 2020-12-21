@@ -118,7 +118,7 @@ def do_it(
     camn2cam_id, cam_id2camns = result_utils.get_caminfo_dicts(h5_2d_data)
 
     cam_ids = list(cam_id2camns.keys())
-    cam_ids.sort()
+    cam_ids = sorted(cam_ids)
 
     data2d = h5_2d_data.root.data2d_distorted
     # use_idxs = numpy.arange(data2d.nrows)
